@@ -1,10 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import configureStore from './components/redux/configureStore';
 import Greeting from './components/Greeting';
 
-const store = configureStore();
+import store from './components/redux/configureStore';
 
 function App() {
   return (

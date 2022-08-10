@@ -1,23 +1,10 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
+import greetingReducer from './greeting';
 
-const initialState = {
-  greeting: 'Want some advice? Click the button below! 👇',
-};
+const store = configureStore({
+  reducer: {
+    greeting: greetingReducer,
+  },
+});
 
-function rootReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'GET_GREETING_SUCCESS':
-      return {
-        ...state,
-        greeting: action.payload.greeting,
-      };
-    default:
-      return state;
-  }
-}
-
-export default function configureStore() {
-  const store = createStore(rootReducer, applyMiddleware(thunk));
-  return store;
-}
+export default store;
